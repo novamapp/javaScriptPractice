@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("ready");
-
-    checkScope();
+    mutableConst();
 });
 
 /*
@@ -23,14 +22,18 @@ let: like var, excepted can be scoped to: block, statement, or expression
 
 */
 
-// var vs let scope
-// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/compare-scopes-of-the-var-and-let-keywords
-function checkScope() {
-    let i = 'function scope';
-    if(true) {
-        let i = 'block scope';
-        console.log('i scope == ', i);
-    }
-    console.log('i scope == ', i);
-    return i;
+// some const declared variables are still mutable
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/mutate-an-array-declared-with-const
+// using const declaration only prevents reassignment of variable identifier
+function mutableConst() {
+    const arr = [5, 7, 9];
+    // can mutate the values within the arr
+    arr.push(12);
+
+    // cannot directly re-assign arr variable
+    // error: arr = [30];
+
+    console.log("Arr: ", arr);
+
+    // can use Object.freeze(objName); to prevent const object from changing
 }
