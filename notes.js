@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     console.log("ready");
-    mutableConst();
+    
+    printTimes(3);
+    console.log(addNums(3, 6));
+    console.log(addToN(3));
+    console.log(addToN(9, 3));
 });
 
 /*
@@ -22,18 +26,20 @@ let: like var, excepted can be scoped to: block, statement, or expression
 
 */
 
-// some const declared variables are still mutable
-// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/mutate-an-array-declared-with-const
-// using const declaration only prevents reassignment of variable identifier
-function mutableConst() {
-    const arr = [5, 7, 9];
-    // can mutate the values within the arr
-    arr.push(12);
-
-    // cannot directly re-assign arr variable
-    // error: arr = [30];
-
-    console.log("Arr: ", arr);
-
-    // can use Object.freeze(objName); to prevent const object from changing
+// https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/es6/use-arrow-functions-to-write-concise-anonymous-functions
+// can use arrow functions in place of anonymous functions
+const afunc = () => {
+    console.log("This is an arrow function");
 }
+
+// single parameter for arrow function
+const printTimes = times => {
+    for(let i=0; i<times; i++) afunc();
+}
+
+// more than one parameter for arrow function
+const addNums = (num1, num2) => num1+" + "+num2+" = "+(num1 + num2);
+
+// arrow function with default parameter
+// the default parameters must be later in the list of parameters
+const addToN = (n, inc=0) => n+" + "+inc+" = "+(n+inc);
